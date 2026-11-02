@@ -159,7 +159,8 @@ def with_base(html):
     base = SITE["basePath"].rstrip("/")
     if not base:
         return html
-    return re.sub(r'(href|src)="/(?!/)', rf'\1="{base}/', html)
+    html = re.sub(r'(href|src)="/(?!/)', rf'\1="{base}/', html)
+    return re.sub(r"url\('/(?!/)", f"url('{base}/", html)
 
 
 def main():
