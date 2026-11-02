@@ -1,0 +1,116 @@
+/* Funston Games: shared styles for every page. Rally the Realm adds rtr.css on top. */
+:root {
+  --bg: #fbf8f3;
+  --surface: #ffffff;
+  --ink: #23180f;
+  --muted: #6a5b4c;
+  --line: #e6ddd0;
+  --accent: #b3261e;
+  --accent-ink: #ffffff;
+  --shadow: 0 1px 2px rgba(35, 24, 15, .06), 0 8px 24px rgba(35, 24, 15, .08);
+  --radius: 16px;
+  --font: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --gutter: 16px;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17120e;
+    --surface: #221b15;
+    --ink: #f3ebe1;
+    --muted: #b9aa98;
+    --line: #3a3027;
+    --accent: #ef6a5b;
+    --accent-ink: #1b0d0a;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17120e; --surface: #221b15; --ink: #f3ebe1; --muted: #b9aa98; --line: #3a3027;
+  --accent: #ef6a5b; --accent-ink: #1b0d0a;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 var(--font);
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-underline-offset: 3px; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5em; font-weight: 800; letter-spacing: -.01em; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-top: 1.6em; }
+h3 { font-size: 1.15rem; margin-top: 1.4em; }
+p, ul, ol { margin: 0 0 1em; }
+li { margin-bottom: .35em; }
+
+.skip { position: absolute; left: -999px; top: 8px; background: var(--surface); padding: 8px 12px; border-radius: 8px; z-index: 10; }
+.skip:focus { left: 8px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+.narrow { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Company header */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.header-inner { max-width: 1080px; margin: 0 auto; padding: 10px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 900; font-size: 1.15rem; }
+.site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.site-nav a { color: var(--ink); text-decoration: none; padding: 8px 12px; border-radius: 999px; font-weight: 700; }
+.site-nav a:hover, .site-nav a[aria-current] { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
+
+/* Company pages */
+.hero-company { padding: clamp(48px, 9vw, 110px) 0 clamp(36px, 6vw, 72px); }
+.hero-company .eyebrow { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; margin-bottom: .6em; }
+.hero-company p.lead { font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: var(--muted); max-width: 40em; }
+.section { padding: 24px 0 56px; }
+.page-head { padding: 48px 0 8px; }
+.page-head p { color: var(--muted); font-size: 1.1rem; }
+
+.game-card {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden; color: var(--ink); text-decoration: none; border: 1px solid var(--line);
+}
+.game-card .shot { background: #2b1a0f center/cover no-repeat; min-height: 280px; }
+.game-card .info { padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.game-card .info img.icon { width: 72px; height: 72px; border-radius: 18px; margin-bottom: 8px; box-shadow: var(--shadow); }
+.game-card h2, .game-card h3 { margin: 0 0 .3em; }
+.game-card p { color: var(--muted); }
+.game-card .more { color: var(--accent); font-weight: 800; }
+.game-card:hover .more { text-decoration: underline; }
+.tag { display: inline-block; font-size: .8rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); margin-bottom: 8px; width: fit-content; }
+.placeholder-card { border: 2px dashed var(--line); border-radius: var(--radius); padding: 28px; color: var(--muted); text-align: center; margin-top: 20px; }
+
+.cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.card h3 { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+
+.button { display: inline-block; background: var(--accent); color: var(--accent-ink); padding: 12px 20px; border-radius: 999px; font-weight: 800; text-decoration: none; }
+.button:hover { filter: brightness(1.08); }
+
+/* Legal and long text pages */
+.prose { padding-bottom: 64px; }
+.prose h2 { font-size: 1.3rem; }
+.prose .updated { color: var(--muted); }
+.callout { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 12px; padding: 14px 16px; margin: 1em 0 1.5em; }
+
+/* Footer */
+.site-footer { background: #1d140d; color: #e9dccb; margin-top: 0; }
+.footer-inner { max-width: 1080px; margin: 0 auto; padding: 40px var(--gutter) 28px; }
+.footer-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 28px; }
+.footer-cols a { display: block; color: #e9dccb; text-decoration: none; padding: 3px 0; }
+.footer-cols a:hover { color: #fff; text-decoration: underline; }
+.footer-title { font-weight: 900; color: #fff; margin-bottom: 6px; }
+.fine { font-size: .82rem; color: #b5a48f; margin-top: 28px; margin-bottom: 0; }
+
+@media (max-width: 760px) {
+  .game-card { grid-template-columns: 1fr; }
+  .game-card .shot { min-height: 0; aspect-ratio: 4 / 3; }
+  .game-card .info { padding: 20px; }
+  .cards3 { grid-template-columns: 1fr; }
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 16px; }
+}

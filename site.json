@@ -1,0 +1,13 @@
+{
+  "companyName": "Funston Games",
+  "companyLegalName": "Funston Games, LLC",
+  "governingState": "the State of Texas",
+  "contactEmail": "support@funstongames.com",
+  "baseUrl": "https://funstongames.com",
+  "basePath": "",
+  "rallyTheRealm": {
+    "appStoreUrl": "",
+    "comingSoonText": "Coming soon to the App Store",
+    "legalUpdated": "November 1, 2026"
+  }
+}

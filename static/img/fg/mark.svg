@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Funston Games">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#b3261e"/>
+  <rect x="17" y="12" width="5" height="42" rx="2.5" fill="#f6ead3"/>
+  <path d="M22 13 H47 L41 22 L47 31 H22 Z" fill="#f2c14e"/>
+  <circle cx="19.5" cy="11" r="4" fill="#f6ead3"/>
+</svg>
