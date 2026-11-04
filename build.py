@@ -42,6 +42,7 @@ VALUES = {
     "legalUpdated": RTR["legalUpdated"],
     "adultAge": RTR["adultAge"],
     "rewardGold": RTR["rewardGold"],
+    "rewardsPerDay": RTR["rewardsPerDay"],
     "storeButton": store_button(),
     "storeButtonLarge": store_button("btn-large"),
     "year": YEAR,
