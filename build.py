@@ -193,6 +193,7 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sitemap}</urlset>\n')
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
     (OUT / ".nojekyll").write_text("")
+    (OUT / "app-ads.txt").write_text(f"google.com, pub-{SITE['admobPublisherId']}, DIRECT, f08c47fec0942fa0\n")
     domain = re.sub(r"^https?://", "", base)
     if not domain.endswith("github.io") and "/" not in domain:
         (OUT / "CNAME").write_text(domain + "\n")
