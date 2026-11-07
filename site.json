@@ -1,5 +1,4 @@
 {
-  "admobPublisherId": "1317694978537456",
   "companyName": "Funston Games",
   "companyLegalName": "Funston Games, LLC",
   "governingState": "the State of Utah",
@@ -9,9 +8,6 @@
   "rallyTheRealm": {
     "appStoreUrl": "",
     "comingSoonText": "Coming soon to the App Store",
-    "legalUpdated": "November 4, 2026",
-    "adultAge": "13",
-    "rewardGold": "300",
-    "rewardsPerDay": "3"
+    "legalUpdated": "November 6, 2026"
   }
 }
