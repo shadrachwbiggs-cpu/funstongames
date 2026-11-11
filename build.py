@@ -189,6 +189,9 @@ def main():
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sitemap}</urlset>\n')
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
+    # Ad buyers check this file to confirm our ad space is genuine (Google AdMob, owner 2026-11-11).
+    if SITE.get("admobPublisherId"):
+        (OUT / "app-ads.txt").write_text(f"google.com, pub-{SITE['admobPublisherId']}, DIRECT, f08c47fec0942fa0\n")
     (OUT / ".nojekyll").write_text("")
     domain = re.sub(r"^https?://", "", base)
     if not domain.endswith("github.io") and "/" not in domain:
