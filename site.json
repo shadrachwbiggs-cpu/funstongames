@@ -9,6 +9,8 @@
   "rallyTheRealm": {
     "appStoreUrl": "",
     "comingSoonText": "Coming soon to the App Store",
-    "legalUpdated": "November 6, 2026"
+    "legalUpdated": "November 11, 2026",
+    "adultAge": "13",
+    "storeAdGold": "250"
   }
 }

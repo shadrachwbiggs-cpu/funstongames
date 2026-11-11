@@ -40,6 +40,8 @@ VALUES = {
     "email": SITE["contactEmail"],
     "baseUrl": SITE["baseUrl"],
     "legalUpdated": RTR["legalUpdated"],
+    "adultAge": RTR["adultAge"],
+    "storeAdGold": RTR["storeAdGold"],
     "storeButton": store_button(),
     "storeButtonLarge": store_button("btn-large"),
     "year": YEAR,
