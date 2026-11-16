@@ -92,9 +92,9 @@ strong { color: #fff; }
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
 }
 .header-inner { max-width: 1120px; margin: 0 auto; padding: 12px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: .2em; text-transform: uppercase; }
-.brand img { filter: drop-shadow(0 0 10px rgba(255, 122, 77, .5)); }
-.brand:hover { color: #fff; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--accent); text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: .2em; text-transform: uppercase; }
+.brand span { text-shadow: 0 0 14px rgba(255, 122, 77, .35); }
+.brand:hover { color: var(--accent-2); }
 
 /* Nav: pills on wide screens, a floating rounded bar at the bottom on phones */
 .site-nav, .rtr-nav { display: flex; gap: 4px; }

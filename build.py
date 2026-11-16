@@ -116,7 +116,7 @@ def layout(page, body, path):
     else:
         header = f"""<header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="/"><img src="/assets/img/fg/mark.svg" alt="" width="34" height="34"><span>{SITE["companyName"]}</span></a>
+    <a class="brand" href="/"><span>{SITE["companyName"]}</span></a>
     <nav class="site-nav" aria-label="Main">{nav_html(COMPANY_NAV, path)}</nav>
   </div>
 </header>"""
