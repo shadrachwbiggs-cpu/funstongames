@@ -13,12 +13,19 @@ Running `python3 build.py` wraps every page in its layout, swaps in the values f
 (written in pages as {{name}}), copies static/ to docs/assets/, and writes the finished site to docs/,
 which is what GitHub Pages serves. Never edit docs/ by hand: it is rebuilt every time.
 """
+import hashlib
 import json
 import re
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).parent
+
+
+def css_href(name):
+    """Stylesheet link with a stamp of its contents, so phones fetch the new file after every change."""
+    stamp = hashlib.sha1((ROOT / "static" / "css" / name).read_bytes()).hexdigest()[:10]
+    return f"/assets/css/{name}?v={stamp}"
 OUT = ROOT / "docs"
 SITE = json.loads((ROOT / "site.json").read_text())
 RTR = SITE["rallyTheRealm"]
@@ -123,9 +130,9 @@ def layout(page, body, path):
     css = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
            '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
            '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;600;700&family=Orbitron:wght@600;700&display=swap">\n'
-           '<link rel="stylesheet" href="/assets/css/site.css">')
+           f'<link rel="stylesheet" href="{css_href("site.css")}">')
     if is_rtr:
-        css += '\n<link rel="stylesheet" href="/assets/css/rtr.css">'
+        css += f'\n<link rel="stylesheet" href="{css_href("rtr.css")}">'
     return f"""<!doctype html>
 <html lang="en">
 <head>
