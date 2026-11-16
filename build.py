@@ -52,11 +52,27 @@ RTR_NAV = [("/rally-the-realm/", "The Game"), ("/rally-the-realm/guide/", "Game 
            ("/rally-the-realm/support/", "Help")]
 
 
+# Small line icons for the nav (shown above each word in the phone's floating bottom bar).
+def _icon(paths):
+    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+            f'stroke-linejoin="round" aria-hidden="true">{paths}</svg>')
+
+
+NAV_ICONS = {
+    "/games/": _icon('<rect x="3" y="7" width="18" height="11" rx="4"/><path d="M8 11v3M6.5 12.5h3"/><circle cx="15.5" cy="12" r=".6"/><circle cx="17.5" cy="14" r=".6"/>'),
+    "/about/": _icon('<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6"/>'),
+    "/contact/": _icon('<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>'),
+    "/rally-the-realm/": _icon('<path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/>'),
+    "/rally-the-realm/guide/": _icon('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>'),
+    "/rally-the-realm/support/": _icon('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.5"/><circle cx="12" cy="17" r=".6"/>'),
+}
+
+
 def nav_html(items, current):
     out = []
     for href, label in items:
         here = ' aria-current="page"' if current == href or (href != "/rally-the-realm/" and current.startswith(href)) else ""
-        out.append(f'<a href="{href}"{here}>{label}</a>')
+        out.append(f'<a href="{href}"{here}>{NAV_ICONS.get(href, "")}<span>{label}</span></a>')
     return "".join(out)
 
 
@@ -104,7 +120,10 @@ def layout(page, body, path):
     <nav class="site-nav" aria-label="Main">{nav_html(COMPANY_NAV, path)}</nav>
   </div>
 </header>"""
-    css = '<link rel="stylesheet" href="/assets/css/site.css">'
+    css = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+           '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;600;700&family=Orbitron:wght@600;700&display=swap">\n'
+           '<link rel="stylesheet" href="/assets/css/site.css">')
     if is_rtr:
         css += '\n<link rel="stylesheet" href="/assets/css/rtr.css">'
     return f"""<!doctype html>
@@ -123,7 +142,8 @@ def layout(page, body, path):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{icon}">
 <link rel="apple-touch-icon" href="{icon}">
-<meta name="theme-color" content="{"#2b1a0f" if is_rtr else "#b3261e"}">
+<meta name="theme-color" content="#1b1220">
+<meta name="color-scheme" content="dark">
 {css}
 </head>
 <body class="{"rtr" if is_rtr else "company"}">
